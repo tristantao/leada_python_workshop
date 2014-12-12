@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 
 def update_message_to_friends(count_dict, friends_in_thread, MY_NAME):
         # I'm speaking to everyone in the thread, so update everyone.
