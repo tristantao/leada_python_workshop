@@ -90,26 +90,3 @@ fig = plot.draw()
 update = {'layout':{'showlegend':True, 'legend':Legend({'x':90}), 'font':{'size':20}}}
 
 py.iplot_mpl(fig, update=update)
-
-
-
-
-
-# Data Cal Tech courses, just missing Andrew Ng's class. => very theoretical, failed miserably. failed again.
-# Udacity AI class, AI courses => Harvard, Learning from Data (Again) at EdX, Lion's Lab, Lion solver.
-# NN class from University of Toronto,
-# Udacity Intro to DS right now, JOB APIs, numpy, ruby, python, ML books
-# Throttle, ethics etc, basic mechanics of throttling etc.
-# OER, University of the people => national accreditation for CS / Business Gates
-# hacker academy, linux academy
-
-
-
-
-
-
-
-
-
-
-
