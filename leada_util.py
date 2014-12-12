@@ -1,5 +1,3 @@
-# import pandas as pd
-
 def update_message_to_friends(count_dict, friends_in_thread, MY_NAME):
         # I'm speaking to everyone in the thread, so update everyone.
     for friend in friends_in_thread:
@@ -24,6 +22,7 @@ def append_to_df(df, entry, index=None):
     # Append data to our df via concat.
     # Direct assignment is too slow (by a large margin).
     # returns the newly appended df.
+    import pandas as pd
     if index == None:
         temp_df = pd.DataFrame([entry], columns=['date', 'name'])
         df = pd.concat([df,temp_df])

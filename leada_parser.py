@@ -1,5 +1,5 @@
 import sys
-import time, csv, optparse
+import time
 from bs4 import BeautifulSoup, SoupStrainer
 import requests
 import dateutil
