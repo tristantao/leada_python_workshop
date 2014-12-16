@@ -45,16 +45,16 @@ print "Starting secondary analysis"
 import leada_parser
 import pandas as pd
 from ggplot import *
-import matplotlib.pyplot as plt
 import scipy.stats as ss
 
 my_lp = leada_parser.LeadaParser(threads, MY_NAME)
 
 unstacked_from, unstacked_to, unstacked_total = my_lp.extract_top_friends_series(top_friends_from_key, top_friends_to_key)
+print unstacked_from.head()
 
 # plot 1 ggplot basic
 my_from_line = pd.melt(unstacked_from, id_vars=['date'])
-ggplot(aes(x='date', y='value', colour="name"), data=my_from_line) + geom_line() + ggtitle('Messages "From" Over Time')
+print ggplot(aes(x='date', y='value', colour="name"), data=my_from_line) + geom_line() + ggtitle('Messages "From" Over Time')
 
 # plot 2 gg plot
 ranked_df_body = unstacked_total.apply(lambda x: x[1:], axis=1)
@@ -64,7 +64,7 @@ ranked_df_body['date'] = unstacked_total['date']
 
 ranked_unstacked_total = ranked_df_body
 my_total_ranked_line = pd.melt(ranked_unstacked_total, id_vars=['date'])
-ggplot(aes(x='date', y='value', colour="name", ylim=10), data=my_total_ranked_line) + \
+print ggplot(aes(x='date', y='value', colour="name"), data=my_total_ranked_line) + \
     scale_x_date(breaks=date_breaks('6 months'), labels='%b %Y') + \
     geom_line(size=3) + \
     ggtitle('Ranking over Time')
@@ -76,17 +76,14 @@ import plotly.plotly as py
 import plotly.tools as tls
 from plotly.graph_objs import *
 from credentials import *
+
 py.sign_in(py_u, py_p)
 
-plot = ggplot(aes(x='date', y='value', colour="name", ylim=10), data=my_total_ranked_line) + \
+plot = ggplot(aes(x='date', y='value', colour="name"), data=my_total_ranked_line) + \
     scale_x_date(breaks=date_breaks('6 months'), labels='%b %Y') + \
     geom_line(size=3) + \
     ggtitle('Ranking over Time')
 
 fig = plot.draw()
-
-# Last bit:
-
 update = {'layout':{'showlegend':True, 'legend':Legend({'x':90}), 'font':{'size':20}}}
-
 py.iplot_mpl(fig, update=update)
