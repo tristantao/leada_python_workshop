@@ -3,7 +3,10 @@ def update_message_to_friends(count_dict, friends_in_thread, MY_NAME):
     for friend in friends_in_thread:
         if friend == MY_NAME:
             continue
-        count_dict[friend][0] += 1
+        try:
+            count_dict[friend][0] += 1
+        except KeyError as kE:
+            count_dict[friend] = [0, 1]
 
 def update_message_from_friend(count_dict, friend, MY_NAME):
     # I'm getting a message from a friend, so update it.
